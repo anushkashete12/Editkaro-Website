@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="email.css">
+  <title>Join Our Newsletter</title>
+
+</head>
+<body>
+<div class="form-container">
+  <h2>Join Our Newsletter</h2>
+  <p>Stay updated with the latest news and offers.</p>
+  <form id="newsletterForm" action="https://script.google.com/macros/s/AKfycbw8ATB6xrJzCvyP2xb4n_brYa6i6ySsoizLv1iB36mJgJZMoxJ5DnSTuyAOBY_JYeep/exec" method="POST">
+    <label>
+      <input type="email" name="email" placeholder="Enter Your Email" required>
+    </label>
+    <button type="submit">Send</button>
+    <p class="loading" id="loadingMessage">Sending...</p>
+  </form>
+  <small>We value your privacy. Unsubscribe anytime.</small>
+  <p id="responseMessage"></p>
+</div>
+
+<script src="email.js">
+  
+</script>
+</body>
+</html>
