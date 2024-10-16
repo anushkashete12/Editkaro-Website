@@ -4,173 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editkaro Portfolio</title>
-    <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f7f7f7; /* Off-white */
-            color: #654ea3; /* Hero section purple for text */
-
-
-
-        }
-
-        h1, h2 {
-            text-align: center;
-            font-weight: bold;
-        }
-button {
-    padding: 12px 30px;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(45deg, #a35a67, #ff6f40); /* Darker gradient colors */
-    color: white;
-    font-weight: bold;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Less shadow */
-    cursor: pointer;
-    transition: box-shadow 0.3s, transform 0.3s;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Reduced shadow */
-}
-
-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4); /* Reduced glow on hover */
-}
-
-
-
-
-
-        /* Hero Section */
-        #hero {
-            height: 100vh;
-            background: linear-gradient(to right, #654ea3, #eaafc8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .hero-content h1 {
-            font-size: 48px;
-            color: white;
-            margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(-30px);
-            animation: fadeInUp 1.5s ease-out forwards;
-            animation-delay: 0.5s;
-        }
-
-        .hero-content p {
-            font-size: 18px;
-            color: white;
-            margin-bottom: 30px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1.5s ease-out forwards;
-            animation-delay: 1s;
-        }
-
-        .cta-button {
-            font-size: 18px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1.5s ease-out forwards;
-            animation-delay: 1.5s;
-        }
-
-        /* Filter Section */
-        .filter-section {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-            padding-bottom: 5%;
-            padding-top: 5%;
-        }
-
-        .filter-section button {
-            margin: 0 10px;
-            background-color: #ff5f5f;
-            color: white;
-            border: none;
-            padding: 10px 40px;
-            border-radius: 5px;
-            cursor: pointer;
-        
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            display: flex;
-            justify-content: space-around;
-            column-gap: 2%;
-            flex-wrap: wrap;
-            padding: 20px;
-            margin-top: 5%;
-        }
-
-        .video {
-            width: 300px;
-            margin-bottom: 30px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: transform 0.5s, opacity 0.5s;
-        }
-
-        .video video {
-            width: 100%;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .video h3 {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        /* For Short-form and eCommerce Ad Videos */
-        .video.short-form video, .video.ads video {
-            max-height: 170px; /* Adjust the height to your desired value */
-            width: 280px; /* Maintain aspect ratio */
-            object-fit: cover; /* Optional, to fit videos better */
-        }
-
-        /* Call to Action Section */
-        .cta-section {
-            
-           background-color: #2e2e2e; /* Dark slate grey */
-color: #eaafc8; /* Light pink for text */
-
-
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            margin-bottom: 20px;
-        }
-
-        .cta-section button {
-            font-size: 18px;
-            background-color: #ff5f5f;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .video {
-                width: 100%;
-            }
-        }
-    </style>
+    
 </head>
 <body>
 
@@ -196,23 +30,23 @@ color: #eaafc8; /* Light pink for text */
     <!-- Portfolio Videos -->
     <section class="portfolio">
         <div class="video short-form">
-            <video src="C:/Users/PCSS/Downloads/Iman Gadhzi Tryout.mp4" controls></video>
+            <video src="videos/Iman Gadhzi Tryout.mp4" controls></video>
             <h3>Short-form Video</h3>
         </div>
         <div class="video long-form">
-            <video src="C:/Users/PCSS/Downloads/Ruhi Ohama Before VS After.mp4" controls></video>
+            <video src="videos/Ruhi Ohama Before VS After.mp4" controls></video>
             <h3>Long-form Video</h3>
         </div>
         <div class="video gaming">
-            <video src="C:/Users/PCSS/Downloads/Gaming Edited YT Video.mp4" controls></video>
+            <video src="videos/Gaming Edited YT Video.mp4" controls></video>
             <h3>Gaming Video</h3>
         </div>
         <div class="video ads">
-            <video src="C:/Users/PCSS/Downloads/3rd Mockup Edit.mp4" controls></video>
+            <video src="videos/3rd Mockup Edit.mp4" controls></video>
             <h3>eCommerce Ad</h3>
         </div>
         <div class="video color-grading">
-            <video src="C:/Users/PCSS/Downloads/Color Grading.mp4" controls></video>
+            <video src="videos/Color Grading.mp4" controls></video>
             <h3>Color Grading</h3>
         </div>
     </section>
@@ -224,40 +58,5 @@ color: #eaafc8; /* Light pink for text */
       <button class="cta-button" onclick="window.location.href='contact.html'">Get in Touch</button>
     </section>
 
-    <script>
-        // Scroll-triggered animations
-        const elements = document.querySelectorAll('.video');
-
-        window.addEventListener('scroll', () => {
-            const triggerPoint = window.innerHeight / 1.2; // Adjust trigger point for animations
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                if (elementTop < triggerPoint) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        });
-
-        // Initially trigger the animation for all videos
-        window.addEventListener('load', () => {
-            elements.forEach(element => {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-            });
-        });
-
-        // Filter videos by category
-        function filterVideos(category) {
-            const videos = document.querySelectorAll('.video');
-            videos.forEach(video => {
-                if (category === 'all' || video.classList.contains(category)) {
-                    video.style.display = 'block';
-                } else {
-                    video.style.display = 'none';
-                }
-            });
-        }
-    </script>
 </body>
 </html>
