@@ -1,7 +1,7 @@
-const elements = document.querySelectorAll('.video');
+ const elements = document.querySelectorAll('.video');
 
         window.addEventListener('scroll', () => {
-            const triggerPoint = window.innerHeight / 1.2; // Adjust trigger point for animations
+            const triggerPoint = window.innerHeight / 1.2; 
             elements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 if (elementTop < triggerPoint) {
@@ -11,7 +11,6 @@ const elements = document.querySelectorAll('.video');
             });
         });
 
-        // Initially trigger the animation for all videos
         window.addEventListener('load', () => {
             elements.forEach(element => {
                 element.style.opacity = '1';
@@ -19,7 +18,6 @@ const elements = document.querySelectorAll('.video');
             });
         });
 
-        // Filter videos by category
         function filterVideos(category) {
             const videos = document.querySelectorAll('.video');
             videos.forEach(video => {
