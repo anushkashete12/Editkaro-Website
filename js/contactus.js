@@ -1,5 +1,5 @@
 document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault(); 
+    event.preventDefault(); // Prevent the default form submission
 
     const loadingMessage = document.getElementById('loadingMessage');
     const responseMessage = document.getElementById('responseMessage');
@@ -8,13 +8,19 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     const data = Object.fromEntries(formData.entries()); // Convert form data to a simple object
 
     loadingMessage.style.display = 'block'; // Show loading message
+    responseMessage.textContent = ''; // Clear previous messages
 
     fetch(this.action, {
         method: 'POST',
-        body: JSON.stringify(data), // Convert data to JSON string
-        headers: { 'Content-Type': 'application/json' } // Specify JSON content type
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' }
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok.');
+        }
+        return response.json();
+    })
     .then(data => {
         loadingMessage.style.display = 'none'; // Hide loading message
 
@@ -23,12 +29,12 @@ document.getElementById('contactForm').addEventListener('submit', function(event
             responseMessage.textContent = 'Thank you! We have received your message.';
             this.reset(); // Reset form after successful submission
         } else {
-            responseMessage.textContent = 'There was an issue submitting your message. Please try again.';
+            responseMessage.textContent = `Error: ${data.message}`;
         }
     })
     .catch(error => {
         loadingMessage.style.display = 'none';
-        responseMessage.textContent = 'Error sending your message. Please try again.';
+        responseMessage.textContent = `Error sending your message: ${error.message}`;
         console.error('Error:', error);
     });
 });
