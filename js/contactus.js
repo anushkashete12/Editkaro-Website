@@ -1,34 +1,24 @@
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
+function doGet(e) {
+  return ContentService.createTextOutput('GET request successful');
+}
 
-    const loadingMessage = document.getElementById('loadingMessage');
-    const responseMessage = document.getElementById('responseMessage');
-    
-    const formData = new FormData(this);
-    const data = Object.fromEntries(formData.entries()); // Convert form data to a simple object
+function doPost(e) {
+  var output = ContentService.createTextOutput();
+  output.setMimeType(ContentService.MimeType.JSON);
+  output.setContent(JSON.stringify({status: 'success'}));
 
-    loadingMessage.style.display = 'block'; // Show loading message
+  return output.setHeaders({
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type'
+  });
+}
 
-    fetch(this.action, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
-    })
-    .then(response => response.json())
-    .then(data => {
-        loadingMessage.style.display = 'none'; // Hide loading message
-
-        // Check response and display appropriate message
-        if (data.status === 'success') {
-            responseMessage.textContent = 'Thank you! We have received your message.';
-            this.reset(); // Reset form after successful submission
-        } else {
-            responseMessage.textContent = 'There was an issue submitting your message. Please try again.';
-        }
-    })
-    .catch(error => {
-        loadingMessage.style.display = 'none';
-        responseMessage.textContent = 'Error sending your message. Please try again.';
-        console.error('Error:', error);
+function doOptions(e) {
+  return ContentService.createTextOutput('')
+    .setHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type'
     });
-});
+}
