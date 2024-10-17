@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="css/contactus.css">
+</head>
+<body>
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <p>We'd love to hear from you! Please fill out the form below, and we'll get back to you as soon as possible.</p>
+
+    <form id="contactForm" action="https://script.google.com/macros/s/AKfycbyqcnKHRq5KN41GGkgsv8U_KAzC6TcWQKCqhAl2HUn1mJzG-E--o-RXLWRH0KoL3tvr3w/exec" method="POST">
+      <div class="input-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required>
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
+      </div>
+
+      <div class="input-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Your phone number">
+      </div>
+
+      <div class="input-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+      </div>
+
+      <button type="submit">Submit</button>
+      <p class="loading" id="loadingMessage">Sending...</p>
+      <p id="responseMessage"></p>
+    </form>
+  </div>
+
+  <script src="js/contactus.js"></script>
+</body>
+</html>
