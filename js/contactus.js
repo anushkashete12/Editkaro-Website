@@ -1,40 +1,37 @@
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
+// Select the contact form and message elements
+const contactForm = document.getElementById('contactForm');
+const loadingMessage = document.getElementById('loadingMessage');
+const responseMessage = document.getElementById('responseMessage');
 
-    const loadingMessage = document.getElementById('loadingMessage');
-    const responseMessage = document.getElementById('responseMessage');
-    
-    const formData = new FormData(this);
-    const data = Object.fromEntries(formData.entries()); // Convert form data to a simple object
+// Add an event listener for form submission
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent the default form submission
+    loadingMessage.classList.add('visible'); // Show loading message
+    responseMessage.textContent = ''; // Clear previous response message
 
-    loadingMessage.style.display = 'block'; // Show loading message
-    responseMessage.textContent = ''; // Clear previous messages
+    const formData = new FormData(contactForm); // Get form data
 
-    fetch(this.action, {
+    // Use Fetch API to submit the form data
+    fetch(contactForm.action, {
         method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok.');
+        body: JSON.stringify(Object.fromEntries(formData.entries())), // Convert FormData to JSON
+        headers: {
+            'Content-Type': 'application/json' // Set content type to JSON
         }
-        return response.json();
     })
+    .then(response => response.json()) // Parse the JSON response
     .then(data => {
-        loadingMessage.style.display = 'none'; // Hide loading message
-
-        // Check response and display appropriate message
+        loadingMessage.classList.remove('visible'); // Hide loading message
         if (data.status === 'success') {
-            responseMessage.textContent = 'Thank you! We have received your message.';
-            this.reset(); // Reset form after successful submission
+            responseMessage.textContent = 'Thank you! We have received your message.'; // Show success message
+            contactForm.reset(); // Clear the form
         } else {
-            responseMessage.textContent = `Error: ${data.message}`;
+            responseMessage.textContent = 'There was an issue submitting your message: ' + data.message; // Show error message
         }
     })
     .catch(error => {
-        loadingMessage.style.display = 'none';
-        responseMessage.textContent = `Error sending your message: ${error.message}`;
-        console.error('Error:', error);
+        loadingMessage.classList.remove('visible'); // Hide loading message
+        responseMessage.textContent = 'An error occurred. Please try again.'; // Show generic error message
+        console.error('Error:', error); // Log the error to the console
     });
 });
