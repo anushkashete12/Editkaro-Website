@@ -1,5 +1,5 @@
 document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault(); 
 
     const loadingMessage = document.getElementById('loadingMessage');
     const responseMessage = document.getElementById('responseMessage');
@@ -11,8 +11,8 @@ document.getElementById('contactForm').addEventListener('submit', function(event
 
     fetch(this.action, {
         method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
+        body: JSON.stringify(data), // Convert data to JSON string
+        headers: { 'Content-Type': 'application/json' } // Specify JSON content type
     })
     .then(response => response.json())
     .then(data => {
